@@ -1,6 +1,7 @@
 "use client"
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { FaTimes } from 'react-icons/fa'
@@ -31,7 +32,7 @@ const page = () => {
        const  description = e.target[1].value;
        const img= e.target[2].value;
        const  content= e.target[3].value;
-       console.log();
+     
 
        const data={
                 title,
@@ -59,7 +60,7 @@ const page = () => {
          catch(err){
 
          }
-      e.reset()
+    
   } 
 
   if (session.status === "unauthenticated") {
@@ -76,7 +77,8 @@ const page = () => {
         
                {
                    data && data.map( (data)=>(
-                    <div key={data._id} className=' flex gap-7 hover:bg-slate-800 '>
+                    <Link key={data._id} href={`/blog/${data._id}`}>
+                         <div  className=' flex gap-7 hover:bg-slate-800 '>
                     <div className=' w-[300px] h-[150px] relative  '>
                       <Image src={data.img} alt=' sa' fill={true} />
                     </div>
@@ -85,6 +87,7 @@ const page = () => {
                       <FaTimes className=' text-2xl text-red-700  ' />
                     </div>
                   </div>
+                    </Link>
                    ))
                }
             </div>

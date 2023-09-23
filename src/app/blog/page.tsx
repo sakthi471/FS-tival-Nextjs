@@ -59,7 +59,7 @@ const page = async() => {
      
 
     return (
-        <div  className=' w-full min-h-screen flex justify-center items-center' >
+        <div  className=' w-full min-h-screen flex justify-center items-center bg-slate-900' >
              <div className=' w-[80%] flex flex-col items-center gap-12 py-20'  >
                  {
                     data && data.map( (blog)=>(

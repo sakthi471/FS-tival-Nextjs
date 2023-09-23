@@ -51,11 +51,7 @@ const Navbar = () => {
       title: "characters",
       url: "/characters",
     },
-    {
-      id: 8,
-      title: "Avengers",
-      url: "/avengers"
-    }
+  
 
 
   ]

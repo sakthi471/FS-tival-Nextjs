@@ -13,7 +13,7 @@ const BlogCard = ({ blog }) => {
     return (
 
         <Link href={`/blog/${blog._id}`} >
-            <div className=' flex  justify-between rounded-md shadow-xl hover:border-2 border-red-500 duration-100'>
+            <div className=' flex  justify-between rounded-md shadow-2xl  hover:border-2 bg-gray-200 border-red-500 duration-100'>
                 <div className=' w-[500px] h-[300px] relative'>
                     <Image src={blog.img} alt={blog.title} fill={true} />
                 </div>
