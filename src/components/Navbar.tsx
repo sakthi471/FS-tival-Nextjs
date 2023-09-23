@@ -5,6 +5,7 @@ import marvelLogo from '@/assets/logo/marvel.svg'
 import Link from 'next/link'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { useRouter } from 'next/navigation'
+import { signOut, useSession } from 'next-auth/react'
 
 
 
@@ -21,24 +22,15 @@ const Navbar = () => {
           
       }
   }
-
+  
+  
   const links = [
     {
       id: 1,
       title: "home",
       url: "/",
     },
-    {
-      id: 2,
-      title: "movies",
-      url: "/movies",
-    },
-    {
-      id: 3,
-      title: "tv shows",
-      url: "/tv shows",
-    }
-    ,
+ 
     {
       id: 4,
       title: "comics",
@@ -69,6 +61,9 @@ const Navbar = () => {
   ]
 
 
+  const session =useSession()
+
+
   return (
     <div className=' w-full bg-[#212021] px-14 py-4 flex justify-between items-center border-b-[1px] border-gray-600'>
         <div className=' relative  w-[100px] h-[50px]  '>
@@ -80,6 +75,12 @@ const Navbar = () => {
           links.map(({ id, title, url }) => (
             <Link className=' capitalize py-2 font-medium  text-gray-300   text-sm hover:border-b-2   border-red-500 hover:text-white hover:font-semibold' href={url} key={id} > {title} </Link>
           ))
+        }
+        {
+          session.status==="authenticated" &&(
+
+            <button onClick={signOut} className=' px-4 py-2 rounded-md text-white  bg-red-600'>Logout</button>
+          )
         }
         {
           searcgToogle && (

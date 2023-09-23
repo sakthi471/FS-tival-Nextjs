@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const page = () => {
+const page = async() => {
 
 
     const blogs=[
@@ -49,14 +49,21 @@ const page = () => {
         },
     ]
    
-    
+     
+     const res= await fetch ("http://localhost:3000/api/posts",{
+        cache:'no-store'
+     });
+       
+     const data= await res.json()
+     console.log(data);
+     
 
     return (
         <div  className=' w-full min-h-screen flex justify-center items-center' >
              <div className=' w-[80%] flex flex-col items-center gap-12 py-20'  >
                  {
-                    blogs.map( (blog)=>(
-                        <BlogCard key={blog.id} blog={blog} />
+                    data && data.map( (blog)=>(
+                        <BlogCard key={blog._id} blog={blog} />
                     ))
                  }
              </div>
