@@ -3,9 +3,10 @@ import CharacterCard from './CharacterCard'
 import { getCharecter } from '@/api/character'
 import Image from 'next/image'
 
+export const dynamic = "force-dynamic"
+
 const ChracterWrapper = async () => {
   const characters = await getCharecter()
-  console.log(characters.results);
   
 
   return (

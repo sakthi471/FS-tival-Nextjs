@@ -10,7 +10,7 @@ type optionType = {
     option: string,
 }
 
-const page = () => {
+const Page = () => {
 
     const [option, setOption] = useState<number>(2)
 
@@ -76,4 +76,4 @@ const page = () => {
     )
 }
 
-    export default page;
+    export default Page;

@@ -1,52 +1,42 @@
-
 import postModel from "@/models/Post";
-import connect from "@/utils/db"
-import { NextApiRequest, NextApiResponse } from "next";
-import { NextRequest, NextResponse } from "next/server"
+import connect from "@/utils/db";
+import { NextRequest, NextResponse } from "next/server";
 
+export const GET = async (req: NextRequest) => {
+    const url = new URL(req.url);
 
-export const GET = async (req:NextApiRequest,res: NextApiResponse) => {
-
-    const url =new URL(req.url)
-
-    const username=url.searchParams.get("username");
-    const id =url.searchParams.get("id")
+    const username = url.searchParams.get("username");
+    const id = url.searchParams.get("id");
 
     try {
-        await connect()
-        if(id){
-            const posts = await postModel.findById(id)
-            console.log(posts);     
-            return NextResponse.json(posts) 
+        await connect();
+        if (id) {
+            const posts = await postModel.findById(id);
+            
+            return NextResponse.json(posts);
+        } else {
+            const posts = await postModel.find(username ? { username } : {});
+            
+            return NextResponse.json(posts);
         }
-        else{
-            const posts = await postModel.find( username && {username})
-            console.log(posts);     
-            return NextResponse.json(posts) 
-        }
-      
+    } catch (err) {
+        console.log(err);
+        return NextResponse.error();
     }
-    catch (err) {
-         console.log( err);
-         
-    }
-} 
+};
 
-export const POST = async (request:Request) => {
-   
-    const body=await  request.json()
+export const POST = async (req: NextRequest) => {
+    const body = await req.json();
     console.log(body);
-    
-     
-    const newPost= new postModel(body)
+
+    const newPost = new postModel(body);
 
     try {
-        await connect()
-        newPost.save()
-        return new NextResponse("post had been creaet",{status:201}) 
+        await connect();
+        await newPost.save();
+        return new NextResponse("Post has been created", { status: 201 });
+    } catch (err) {
+        console.log(err);
+        return NextResponse.error();
     }
-    catch (err) {
-         console.log( err);
-         
-    }
-} 
+};

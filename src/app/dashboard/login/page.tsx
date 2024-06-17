@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
-const page = () => {
+const Page = () => {
 
 
   const [email, setEmail] = useState("")
@@ -37,7 +37,7 @@ const page = () => {
           </form>
           <button className=' px-5 w-[300px] py-3 bg-blue-700 rounded-md text-white font-bold' onClick={() => signIn("google")} > Login with Google</button>
     
-          <Link href="/dashboard/register" className='  text-gray-400 hover:border-b-2 hover: border-red-600 py-5 ' >Don't have an account  <span> create</span> </Link>
+          <Link href="/dashboard/register" className='  text-gray-400 hover:border-b-2 hover: border-red-600 py-5 ' >Don&apos;t have an account  <span> create</span> </Link>
         </div>
       )
     }
@@ -46,4 +46,4 @@ const page = () => {
    
 }
 
-export default page
+export default Page

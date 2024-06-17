@@ -3,6 +3,8 @@
 import { getCharecterDetalis } from '@/api/character';
 import Image from 'next/image';
 import React from 'react'
+export const dynamic = "force-dynamic"
+
 
 interface characterDetailProps {
   params: {

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 
-const page = () => {
+const Page = () => {
     
     const router=useRouter()
   
@@ -23,7 +23,7 @@ const page = () => {
         
         
         try{
-          const res= await fetch ("http://localhost:3000/api/auth/register/",{
+          const res= await fetch (`/api/auth/register/`,{
             method:"POST",
             headers:{
               "Content-Type":"application/json"
@@ -58,4 +58,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

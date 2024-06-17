@@ -3,7 +3,7 @@ import { TypeAnimation } from "react-type-animation";
 
 
 
-export default async function Home() {
+export default  function Home() {
   return (
     <div className=" w-full min-h-screen bg-image   z-20 text-white flex  items-center ">
        <div className="w-full h-screen bg-image-gray flex items-center px-20">

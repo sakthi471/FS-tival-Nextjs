@@ -2,6 +2,8 @@
 import Loading from '@/components/Loading'
 import React from 'react'
  import { Bars } from 'react-loader-spinner'
+ export const dynamic = "force-dynamic"
+
 
 const loading = () => {
   return (

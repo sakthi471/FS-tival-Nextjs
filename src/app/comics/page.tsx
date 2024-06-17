@@ -3,13 +3,15 @@ import Comics from '@/components/Comics';
 import Image from 'next/image';
 import React from 'react'
 import ComicsImg from '@/assets/background/wp1832315-marvel-comics-wallpapers.jpg'
+export const dynamic = "force-dynamic"
+
 
 const page = async () => {
 
   const comics = await getComics()
 
 
-  console.log(comics.results);
+  
 
 
   return (

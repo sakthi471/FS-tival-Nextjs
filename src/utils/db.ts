@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 const  connect = async ()=>{
      try{
-         await mongoose.connect("mongodb+srv://sakthi:sakthi@cluster0.s9oiohd.mongodb.net/marvel?retryWrites=true&w=majority")
+         await mongoose.connect(process.env.MONGODB_URI as string,)
      }
 
      catch(err){

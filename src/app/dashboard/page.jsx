@@ -10,21 +10,18 @@ import useSWR from 'swr'
 
 
 
-const page = () => {
+const Page = () => {
 
 
 
   const session = useSession()
-  console.log(session);
   const router = useRouter()
-  console.log(session);
 
   const fetcher = (...args) => fetch(...args).then(res => res.json())
   const { data, error, isLoading } = useSWR(
-    `http://localhost:3000/api/posts?username=${session.data?.user.name}`,
+    `/api/posts?username=${session.data?.user.name}`,
     fetcher
   );
-  console.log(data);
 
   const handleSubmit = async(e)=>{
          e.preventDefault()
@@ -41,11 +38,10 @@ const page = () => {
                 content,
                 username:session.data.user.name
        }
-       console.log( JSON.stringify(data));
        
          try{
            
-         const res=  await fetch("http://localhost:3000/api/posts",{
+         const res=  await fetch("/api/posts",{
              method:"POST",
              body:JSON.stringify({
                 title,
@@ -111,4 +107,4 @@ const page = () => {
 
 }
 
-export default page
+export default Page

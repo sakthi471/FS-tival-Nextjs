@@ -14,10 +14,9 @@ const page = async ({ params }: comicDetailProps) => {
     const { id } = params
     const comic = await getComicsDetails(id)
     const oneComic = comic.results[0]
-    console.log(oneComic);
     
     return (
-        <div className=' w-full min-h-screen flex flex-col items-center justify-center rounded-md'>
+        <div  className=' w-full min-h-screen flex flex-col items-center justify-center rounded-md'>
             <div className=' bg-slate-800 w-[80%] min-h-[200px] p-10 flex gap-10'>
                 <div className=' w-[300px] h-[500px] relative'>
                     <Image src={`${oneComic.thumbnail.path}.${oneComic.thumbnail.extension}`} alt={`${oneComic.title}`} fill={true} />
@@ -27,8 +26,8 @@ const page = async ({ params }: comicDetailProps) => {
                     <p className=' font-bold text-2xl '>  {oneComic.title}</p>
                     <p className='font-bold text-2xl  '> Published:  <span className=' font-normal text-base'> {oneComic.modified.slice(0, 10)}</span></p>
                   <div>
-                      {  oneComic.creators.items.map((creater)=>(
-                        <p className='font-bold text-xl  capitalize'>{ creater.role}: <span className='font-normal text-base'> {creater.name}</span> </p>
+                      {  oneComic.creators.items.map((creater,index)=>(
+                        <p key={index} className='font-bold text-xl  capitalize'>{ creater.role}: <span className='font-normal text-base'> {creater.name}</span> </p>
                       ))
                       }
                   </div>

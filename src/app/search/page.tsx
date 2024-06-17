@@ -6,7 +6,7 @@ import { searchCharater } from '@/api/character'
 import { useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
-const page = () => {
+const Page = () => {
     const searchPrams = useSearchParams()
     const querySearch = searchPrams.get('query')
     const [data, setData] = useState<Character[]>([])
@@ -15,7 +15,6 @@ const page = () => {
     useEffect(() => {
         const getData = async () => {
             const data = await searchCharater(querySearch)
-            console.log(data);
 
             setData(data.results)
         }
@@ -37,4 +36,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
